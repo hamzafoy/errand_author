@@ -1,0 +1,23 @@
+{
+  "name": "errand_author",
+  "version": "1.0.0",
+  "description": "This lightweight app will allow for form input to be stored in a Google Sheet.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamzafoy/errand_author.git"
+  },
+  "author": "Hamza Foy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hamzafoy/errand_author/issues"
+  },
+  "homepage": "https://github.com/hamzafoy/errand_author#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^3.0.2"
+  }
+}
