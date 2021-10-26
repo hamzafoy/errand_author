@@ -28,6 +28,10 @@ function asyncHandler(cb){
 :::::::::::  Backend Routes  :::::::::::::
 ::::::::::::::::::::::::::::::::::::::::*/
 
+router.get('/', asyncHandler(async (req, res) => {
+    res.render('form', { submission: {} } );
+}));
+
 
 
 /*::::::::::::::::::::::::::::::::::::::::
