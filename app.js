@@ -4,7 +4,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const {google} = require('googleapis');
 require('dotenv').config()
 const routes = require('./routes');
 
