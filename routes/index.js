@@ -37,7 +37,7 @@ router.post('/form', asyncHandler(async( req, res) => {
 
     console.log(req.body);
 
-    const { name, description } = req.body;
+    const { name, phone } = req.body;
 
     const auth = new google.auth.GoogleAuth({
         keyFile: "keys.json",
@@ -56,7 +56,7 @@ router.post('/form', asyncHandler(async( req, res) => {
         range: "Sheet1!A:B",
         valueInputOption: 'RAW',
         resource: {
-            values: [[ name, description ]]
+            values: [[ name, phone ]]
         }
     })
 
