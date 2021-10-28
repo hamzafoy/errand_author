@@ -34,12 +34,30 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 router.post('/form', asyncHandler(async( req, res) => {
+
     console.log(req.body);
+
     const { request, name } = req.body;
 
     const auth = new google.auth.GoogleAuth({
         keyFile: "keys.json",
         scopes: process.env.SCOPE
+    })
+
+    const authClientObject = await auth.getClient();
+
+    const googleSheetsInstance = google.sheets({ version: "v4", auth: authClientObject });
+
+    const spreadsheetId = process.env.SPREADSHEET_ID;
+
+    await googleSheetsInstance.spreadsheets.values.append({
+        auth,
+        spreadsheetId,
+        range: "Sheet1!A:B",
+        valueInputOption: 'RAW',
+        resource: {
+            values: [[ "Test", "This is Test" ]]
+        }
     })
 
     res.redirect('/');
