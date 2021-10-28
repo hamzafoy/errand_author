@@ -4,9 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const {google} = require('googleapis');
-
-const sheets = google.sheets('v4');
+const { google } = require('googleapis');
 
 
 
@@ -37,16 +35,13 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post('/form', asyncHandler(async( req, res) => {
     console.log(req.body);
-    const params = {
-        spreadsheetId: process.env.SPREADSHEET_ID,
-        range: 'Sheet1',
-        valueInputOption: 'RAW',
-        insertDataOption: 'INSERT_ROWS'
-    };
-    const valueRangeBody = {
-        'majorDimension': 'ROWS',
-        'values': req.body
-    }
+    const { request, name } = req.body;
+
+    const auth = new google.auth.GoogleAuth({
+        keyFile: "keys.json",
+        scopes: process.env.SCOPE
+    })
+
     res.redirect('/');
 }))
 
