@@ -13,7 +13,8 @@ html(lang="en")
                         name="name" 
                         placeholder="Enter a name here" 
                         value=submission.name
-                        required)
+                        required
+                        pattern="^[A-Z]\\w{1,25}")
                 .form-section 
                     label.form-label(for="phone") Text: 
                     input.form-input(
