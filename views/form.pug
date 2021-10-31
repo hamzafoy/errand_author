@@ -7,7 +7,7 @@ html(lang="en")
         .app 
             form(action="/form" method="post")
                 .form-section 
-                    label.form-label(for="name") Full Name: 
+                    label.form-label(for="name") Full Name*: 
                     input.form-input(
                         type="text", 
                         name="name" 
@@ -16,7 +16,7 @@ html(lang="en")
                         required
                         pattern="^[A-Z]\\w{1,25}")
                 .form-section 
-                    label.form-label(for="phone") Cell Phone #: 
+                    label.form-label(for="phone") Cell Phone #*: 
                     input.form-input(
                         type="tel", 
                         name="phone" 
@@ -24,4 +24,5 @@ html(lang="en")
                         value=submission.phone
                         required
                         pattern="\\(\\d{3}\\)\\d{7}")
+                    p.form-info * indicates required
                 input(type="submit")
