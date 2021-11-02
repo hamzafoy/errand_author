@@ -49,7 +49,7 @@ function renderCivilianTime(date) {
 ::::::::::::::::::::::::::::::::::::::::*/
 
 router.get('/', asyncHandler(async (req, res) => {
-    res.render('form', { submission: {} } );
+    res.render('dashboard', { submission: {} } );
 }));
 
 router.post('/form', asyncHandler(async( req, res) => {
