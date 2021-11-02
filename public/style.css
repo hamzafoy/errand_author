@@ -1,11 +1,27 @@
+form { 
+    display: table;
+}
+
+
 p {
     margin-block-start: 0;
     margin-block-end: 0;
 }
 
 
+label {
+    display: table-cell;
+}
+
+
+input {
+    display: table-cell;
+    margin: 0.5vh 0;
+}
+
+
 .form-section {
-    margin: 0.75vh 0;
+    display: table-row;
 }
 
 
@@ -21,6 +37,6 @@ p {
 
 .form-input:required {
     padding-right: 2vw;
-    background-color: coral;
+    background-color: lightsteelblue;
     color: white;
 }

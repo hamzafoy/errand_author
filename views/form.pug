@@ -14,7 +14,7 @@ html(lang="en")
                         placeholder="Enter a name here" 
                         value=submission.name
                         required
-                        pattern="^[A-Z]\\w{1,25}")
+                        pattern="^[A-Z].{1,25}")
                 .form-section 
                     label.form-label(for="phone") Cell Phone #*: 
                     input.form-input(
@@ -24,5 +24,6 @@ html(lang="en")
                         value=submission.phone
                         required
                         pattern="\\(\\d{3}\\)\\d{7}")
+                .form-section 
                     p.form-info * indicates required
                 input(type="submit")
