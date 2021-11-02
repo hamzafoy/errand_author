@@ -26,6 +26,15 @@ function asyncHandler(cb){
 
 
 /*::::::::::::::::::::::::::::::::::::::::
+::::::  Date & Time Object Handling  :::::
+::::::::::::::::::::::::::::::::::::::::*/
+
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+
+/*::::::::::::::::::::::::::::::::::::::::
 :::::::::::  Backend Routes  :::::::::::::
 ::::::::::::::::::::::::::::::::::::::::*/
 
@@ -36,6 +45,9 @@ router.get('/', asyncHandler(async (req, res) => {
 router.post('/form', asyncHandler(async( req, res) => {
 
     console.log(req.body);
+
+    let today = new Date();
+    let dateOfPost = `${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`
 
     const { name, phone } = req.body;
 
@@ -53,10 +65,10 @@ router.post('/form', asyncHandler(async( req, res) => {
     await googleSheetsInstance.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sheet1!A:B",
+        range: "Sheet1!A:C",
         valueInputOption: 'RAW',
         resource: {
-            values: [[ name, phone ]]
+            values: [[ name, phone, dateOfPost ]]
         }
     })
 

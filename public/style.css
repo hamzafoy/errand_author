@@ -26,17 +26,15 @@ input {
 
 
 .form-input:invalid {
-    border: 3px solid crimson;
+    border: 3px solid #F25467;
 }
 
 
 .form-input::placeholder {
-    color: cornsilk;
+    color: #484538;
 }
 
 
 .form-input:required {
-    padding-right: 2vw;
-    background-color: lightsteelblue;
-    color: white;
+    background-color: #DAE2FB;
 }
