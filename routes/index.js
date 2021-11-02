@@ -12,7 +12,7 @@ const { google } = require('googleapis');
 :::::::  Async Handler Function  :::::::::
 ::::::::::::::::::::::::::::::::::::::::*/
 
-function asyncHandler(cb){
+function asyncHandler(cb) {
     return async(req, res, next) => {
         try {
         await cb(req, res, next)
@@ -32,6 +32,16 @@ function asyncHandler(cb){
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+function renderCivilianTime(date) {
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    if (hour > 12) {
+        return `${hour - 12}:${minute}PM`;
+    } else if (hour < 12) {
+        return `${hour}:${minute}AM`;
+    }
+}
+
 
 
 /*::::::::::::::::::::::::::::::::::::::::
@@ -48,7 +58,7 @@ router.post('/form', asyncHandler(async( req, res) => {
 
     let today = new Date();
     let dateOfPost = `${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`
-
+    let timeOfPost = renderCivilianTime(today);
     const { name, phone } = req.body;
 
     const auth = new google.auth.GoogleAuth({
@@ -65,10 +75,10 @@ router.post('/form', asyncHandler(async( req, res) => {
     await googleSheetsInstance.spreadsheets.values.append({
         auth,
         spreadsheetId,
-        range: "Sheet1!A:C",
+        range: "Sheet1!A:D",
         valueInputOption: 'RAW',
         resource: {
-            values: [[ name, phone, dateOfPost ]]
+            values: [[ name, phone, dateOfPost, timeOfPost ]]
         }
     })
 
