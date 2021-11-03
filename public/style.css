@@ -58,6 +58,8 @@ input {
 .primer {
     display: flex;
     flex-direction: column;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 
