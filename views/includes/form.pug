@@ -1,7 +1,8 @@
 .spreadsheet-form 
+    h2 Enter the Task Below
     form(action="/form" method="post")
         .form-section 
-            label.form-label(for="name") Full Name*: 
+            label.form-label(for="name") Task Name*: 
             input.form-input(
                 type="text", 
                 name="name" 
@@ -10,7 +11,7 @@
                 required
                 pattern="^[A-Z].{1,25}")
         .form-section 
-            label.form-label(for="phone") Cell Phone #*: 
+            label.form-label(for="phone") Task Description*: 
             input.form-input(
                 type="tel", 
                 name="phone" 
