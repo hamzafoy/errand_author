@@ -59,7 +59,7 @@ router.post('/form', asyncHandler(async( req, res) => {
     let today = new Date();
     let dateOfPost = `${days[today.getDay()]} ${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`
     let timeOfPost = renderCivilianTime(today);
-    const { name, phone } = req.body;
+    const { taskName, taskDesc } = req.body;
 
     const auth = new google.auth.GoogleAuth({
         keyFile: "keys.json",
@@ -78,7 +78,7 @@ router.post('/form', asyncHandler(async( req, res) => {
         range: "Sheet1!A:D",
         valueInputOption: 'RAW',
         resource: {
-            values: [[ name, phone, dateOfPost, timeOfPost ]]
+            values: [[ taskName, taskDesc, dateOfPost, timeOfPost ]]
         }
     })
 
