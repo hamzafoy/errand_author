@@ -5,7 +5,7 @@
             label.form-label(for="name") Task Name*: 
             input.form-input(
                 type="text", 
-                name="name" 
+                name="task_name" 
                 placeholder="Enter a name here" 
                 value=submission.name
                 required
@@ -13,8 +13,8 @@
         .form-section 
             label.form-label(for="phone") Task Description*: 
             input.form-input(
-                type="tel", 
-                name="phone" 
+                type="text", 
+                name="task_desc" 
                 placeholder="Format: (502)920-2020" 
                 value=submission.phone
                 required
